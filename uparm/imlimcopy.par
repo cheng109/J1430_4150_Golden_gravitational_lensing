@@ -1,0 +1,4 @@
+input,s,a,'imgblock.fits[3]',,,'Input images'
+output,s,a,'Gold_gal_subtracted.fits',,,'Output images or directory'
+verbose,b,h,yes,,,'Print operations performed?'
+mode,s,h,'ql'
