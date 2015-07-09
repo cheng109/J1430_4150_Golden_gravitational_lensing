@@ -1,6 +1,10 @@
 # Edit by Jun Cheng
 
+# usage:
+#   python extractReducedChiSquare.py <DirectoryName>
+
 import os.path
+import sys
 import re
 
 def getLogFileList(DirectoryName):
@@ -11,9 +15,6 @@ def getLogFileList(DirectoryName):
             logFileList.append(name)
     return logFileList
 
-
-
-
 def getReducedChiSquare(logFileList, outputFile):
     file = open(outputFile,'w')
     file.write("#column1: Log file name \n"
@@ -21,6 +22,7 @@ def getReducedChiSquare(logFileList, outputFile):
                +"#column3: Star Time\n"
                +"#column4: End Time\n"
                +"#column5: Time used\n"
+               +"\n"
                )
     for fileName in logFileList:
 
@@ -54,7 +56,9 @@ def getTimeUsed(fileName, lineWithEndTime):
 
 def main():
     outputFile = "output.txt"
-    DirectoryName= "/Users/cheng109/work/J1430_4150_Golden_gravitational_lensing"
+    #DirectoryName= "/Users/cheng109/work/J1430_4150_Golden_gravitational_lensing/logFileDirectory_test/"
+    DirectoryName= os.getcwd() + "/" + sys.argv[1]
+    os.chdir( DirectoryName)
     logFileList = getLogFileList(DirectoryName)
     getReducedChiSquare(logFileList, outputFile)
 
